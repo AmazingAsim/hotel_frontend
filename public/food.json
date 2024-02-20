@@ -1,0 +1,23 @@
+[
+    {
+        "name": " Cheese Pizza",
+        "price": 10,
+        "serving_size": 8,
+        "origin": "Italy" 
+    },
+
+    {
+        "name": "Byriani",
+        "price": 15,
+        "serving_size": 6,
+        "origin": "Asia"
+    },
+
+    {
+        "name": "Salad",
+        "price": 8,
+        "serving_size": 1,
+        "origin": "Ancient Rome"
+    }
+ 
+]

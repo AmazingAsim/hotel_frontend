@@ -1,0 +1,25 @@
+[
+    {
+        "roomId":"A001",
+        "availability" : false,
+        "stars": 5,
+        "capacity": 4,
+        "guestId": "119"
+    },
+
+    {
+        "roomId":"A002",
+        "availability" : false,
+        "stars": 5,
+        "capacity": 4,
+        "guestId": "113"
+    },
+
+    {
+        "roomId":"A003",
+        "availability" : true,
+        "stars": 5,
+        "capacity": 4,
+        "guestId":null
+    }
+]
