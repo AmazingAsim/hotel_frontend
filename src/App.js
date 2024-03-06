@@ -18,7 +18,7 @@ function App() {
                   <Route  path = "customers" element = {<Customers/>}/>
                   <Route  path = "food" element = {<Food/>}/>
                   <Route  path = "rooms" element = {<Rooms/>}/>
-                  <Route  path = "updaterooms/:roomId/:available/:guestId" element = {<Updateroom/>}/>
+                  <Route  path = "updaterooms/:roomId/:available/:guestId/:stars/:capacity" element = {<Updateroom/>}/>
           </Routes>
     </BrowserRouter>
   </div>

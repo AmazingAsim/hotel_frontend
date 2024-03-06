@@ -12,7 +12,7 @@ export default function Rooms() {
 
     let getRoomsInfo = async()=>{ 
         try{
-            let result = await axios.get('https://hotel-management-gc2y.onrender.com/api/getrooms');
+            let result = await axios.get('https://hotel-backend-tol3.onrender.com/rooms/getrooms');
             setRooms(result.data);
         }
         catch(err){
@@ -43,7 +43,7 @@ export default function Rooms() {
 
 
                                 return(
-                                    <tr onClick={()=>{navigate(`../updaterooms/${room.roomId}/${room.available}/${room.guestId}`)}} role='button'>
+                                    <tr onClick={()=>{navigate(`../updaterooms/${room.roomId}/${room.available}/${room.guestId}/${room.stars}/${room.capacity}`)}} role='button'>
                                         <td>{room.roomId}</td>
                                         <td>{room.available ? 'available':'not available' }</td>
                                         <td>{room.stars}</td> 

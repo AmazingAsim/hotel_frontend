@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 
 export default function Updateroom() {
+
   let param = useParams()
   const roomId = param.roomId;
   const [room, setRoom] = useState([]);
@@ -13,22 +14,24 @@ export default function Updateroom() {
   const [guestId, setGuestId] = useState(param.guestId)
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
   let navigate  = useNavigate();
-  let getRoomsInfo = async () => {
-    try {
-      let result = await axios.get(`https://hotel-management-gc2y.onrender.com/api/getroom/${param.roomId}`);
-      setRoom(result.data[0])
-      setAvailable(result.data[0].available);
-
-    }
-    catch (err) {
-      console.log(err);
-    }
-  }
 
 
-  useEffect(function () {
-    getRoomsInfo()
-  }, [])
+  // let getRoomsInfo = async () => {
+  //   try {
+  //     let result = await axios.get(`https://hotel-management-gc2y.onrender.com/api/getroom/${param.roomId}`);
+  //     setRoom(result.data[0])
+  //     setAvailable(result.data[0].available);
+
+  //   }
+  //   catch (err) {
+  //     console.log(err);
+  //   }
+  // }
+
+
+  // useEffect(function () {
+  //   getRoomsInfo()
+  // }, [])
 
 
 
@@ -37,7 +40,7 @@ export default function Updateroom() {
     console.log(data)
 
     try {
-      let result =await axios.post('https://hotel-management-gc2y.onrender.com/api/updateroom',
+      let result =await axios.post('https://hotel-backend-tol3.onrender.com/rooms/updateroom',
         { ...data, available,roomId }, { headers: { 'Content-Type': "application/json" } });
 
      if(result.status==200){
@@ -72,7 +75,7 @@ export default function Updateroom() {
                       <input  style={{fontSize:'8vw',position:'relative',left:'18vw'}}  onChange={
                         (event) => {
                           setAvailable(event.target.checked ? 1 : 0);
-                          event.target.checked ? setGuestId(null) : setGuestId(room.guestId)
+                          event.target.checked ? setGuestId(null) : setGuestId(param.guestId)
                         }
                       }
                         className="form-check-input" type="checkbox"
@@ -97,7 +100,7 @@ export default function Updateroom() {
                           className="form-control" placeholder='guestId' />
                         :
 
-                        <input disabled={false}{...register('guestId', { value: room?.guestId })} type="text"
+                        <input disabled={false}{...register('guestId', { value: param?.guestId })} type="text"
                           className="form-control" placeholder='guestId' defaultValue={guestId} />
                     }
 
@@ -106,11 +109,11 @@ export default function Updateroom() {
 
                     {/* starts */}
                     <input {...register('stars', { value: room?.stars })} type="text"
-                      className="form-control" placeholder='stars' defaultValue={room?.stars} />
+                      className="form-control" placeholder='stars' defaultValue={param?.stars} />
 
                      {/* capacity */}
-                    <input {...register('capacity', { value: room.capacity })} type="text" className="form-control"
-                      placeholder='capacity' defaultValue={room?.capacity} />
+                    <input {...register('capacity', { value: param?.capacity })} type="text" className="form-control"
+                      placeholder='capacity' defaultValue={param?.capacity} />
                     <button className='btn btn-success' type="submit">submit</button>
                   </div>
                 </div>
