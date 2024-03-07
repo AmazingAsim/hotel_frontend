@@ -16,24 +16,6 @@ export default function Updateroom() {
   let navigate  = useNavigate();
 
 
-  // let getRoomsInfo = async () => {
-  //   try {
-  //     let result = await axios.get(`https://hotel-management-gc2y.onrender.com/api/getroom/${param.roomId}`);
-  //     setRoom(result.data[0])
-  //     setAvailable(result.data[0].available);
-
-  //   }
-  //   catch (err) {
-  //     console.log(err);
-  //   }
-  // }
-
-
-  // useEffect(function () {
-  //   getRoomsInfo()
-  // }, [])
-
-
 
   let submitdata = async (data) => {
 
