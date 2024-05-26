@@ -7,9 +7,11 @@ import Updateroom from './components/Updateroom';
 import Rooms from './components/rooms';
 
 
+
 function App() {
   return (
-  <div className='main'>
+  <main className='main'>
+
     <BrowserRouter>
           <Navbar/>
           <Routes>
@@ -19,7 +21,8 @@ function App() {
                   <Route  path = "updaterooms/:roomId/:available/:guestId/:stars/:capacity" element = {<Updateroom/>}/>
           </Routes>
     </BrowserRouter>
-  </div>
+
+  </main>
   );
 }
 

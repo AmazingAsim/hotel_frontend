@@ -1,7 +1,14 @@
 @import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
-
 @import url('https://fonts.googleapis.com/css2?family=Chela+One&display=swap');
+
 
 body{
   font-family: 'Chela One', cursive;
+}
+
+#dashboard{
+  background:url('https://news.airbnb.com/wp-content/uploads/sites/4/2018/02/8ff20ca5-62ef-42c2-bcbc-3057084dfa2e.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 70vh;
 }

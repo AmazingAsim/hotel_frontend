@@ -4,9 +4,7 @@ import { useState,useEffect } from 'react'
 
 export default function Foods() {
     const [foods,setfoods] = useState([]);
-
     let getFoodsInfo = async()=>{ 
-
         try{
             let result = await axios.get('food.json');
             setfoods(result.data)
@@ -15,9 +13,7 @@ export default function Foods() {
             console.log(err)
         }
     }
-
-    useEffect(function(){getFoodsInfo()},[])
-          
+    useEffect(function(){getFoodsInfo()},[])     
   return (
     <div>
             <h1 className='display-3 fw-bolder p-2 border border-top-0 border-bottom-1 border-warning'>foods</h1>

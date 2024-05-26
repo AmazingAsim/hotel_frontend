@@ -7,9 +7,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Rooms() {
     
     let navigate = useNavigate()
-
     const [rooms,setRooms] = useState([]);
-
     let getRoomsInfo = async()=>{ 
         try{
             let result = await axios.get('https://hotel-backend-tol3.onrender.com/rooms/getrooms');
@@ -19,44 +17,50 @@ export default function Rooms() {
             console.log(err)
         }
     }
-
     useEffect(function(){ getRoomsInfo()},[])
           
   return (
     <div>
-            <h1 className='display-3 fw-bolder p-2 border border-top-0 border-bottom-1 border-warning'>Rooms</h1>
+    <h1 className='display-3 fw-bolder p-2 border border-top-0 border-bottom-1 border-warning'>Rooms</h1>
 
+{
+    rooms.length==0 ? <div className='d-flex justify-content-center mt-5'>
+        <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div> 
+  <p> please wait the backend is hosted for free and hence slow </p>
+  </div>
+  :
             <div className="container">
-                <table className="table text-center table-hover">
+               <div className='row'>
 
-                    <thead className='bg-warning'>
-                        <th>Room Id</th>
-                        <th>Available</th>
-                        <th>Stars</th>
-                        <th>Capacity</th>
-                        <th>Guest Id</th>
-                    </thead>
-
-                    <tbody>
+              
+                   
                         {
                             rooms.map(function(room){
 
 
                                 return(
-                                    <tr onClick={()=>{navigate(`../updaterooms/${room.roomId}/${room.available}/${room.guestId}/${room.stars}/${room.capacity}`)}} role='button'>
-                                        <td>{room.roomId}</td>
-                                        <td>{room.available ? 'available':'not available' }</td>
-                                        <td>{room.stars}</td> 
-                                        <td>{room.capacity}</td>
-                                        <td>{room.guestId?room.guestId:'Null'}</td>
-                                    </tr>
+                                    <div className='col-sm-4'>
+                                    <div className='card P-3 px-3' onClick={()=>{navigate(`../updaterooms/${room.roomId}/${room.available}/${room.guestId}/${room.stars}/${room.capacity}`)}} role='button'>
+                                        <h3 className='card-header'>{room.roomId}</h3>
+                                        <h5> Available: {room.available ? 'available':'not available' }</h5>
+                                        <h5>Stars: {room.stars}</h5> 
+                                        <h5>Capacity: {room.capacity}</h5>
+                                        <h5> Guest Id: {room.guestId?room.guestId:'Null'}</h5>
+                                        <h5><button className='btn btn-warning'>update</button></h5>
+                                    </div>
+                                    </div>
                                 ) 
                             })
                         }
-                    </tbody>
+                 
 
-                </table>
+                    </div>
             </div>
+                    }
     </div>
   )
 }
+
+
